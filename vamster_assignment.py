@@ -1,6 +1,6 @@
 import json
 
-js_fil ='''
+js_fil= '''
 [{"Gender": "Male", "HeightCm": 171, "WeightKg": 96 },
 { "Gender": "Male", "HeightCm": 161, "WeightKg": 85 },
 { "Gender": "Male", "HeightCm": 180, "WeightKg": 77 },
@@ -8,6 +8,7 @@ js_fil ='''
 {"Gender": "Female", "HeightCm": 150, "WeightKg": 70},
 {"Gender": "Female", "HeightCm": 167, "WeightKg": 82}]
 '''
+
 js_file = json.loads(js_fil)
 
 overweight_count = 0
@@ -15,7 +16,6 @@ overweight_count = 0
 for i in range(0,len(js_file)):
     h = (js_file[i]["HeightCm"])/100
     m = (js_file[i]["WeightKg"])
-    print(round(m/(h)**2,2))
     js_file[i]["BMI"] = round(m/(h)**2,2)
     if js_file[i]["BMI"] <=18.5:
         js_file[i]["BMI CATEGORY"] = "Underweight"
@@ -38,4 +38,5 @@ for i in range(0,len(js_file)):
         js_file[i]["Health Risk"] = "very high risk"
         
 print(js_file)
-print(overweight_count)
+print("\nOverweight People are : " + str(overweight_count))
+
